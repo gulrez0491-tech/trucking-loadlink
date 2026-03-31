@@ -1,0 +1,23 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "services": {
+    "backend": {
+      "buildCommand": "npm install",
+      "startCommand": "npm start",
+      "variables": {
+        "NODE_ENV": "production",
+        "PORT": "5000"
+      },
+      "roots": ["backend"]
+    },
+    "frontend": {
+      "buildCommand": "npm run build",
+      "startCommand": "npm install -g serve && serve -s build -l 3000",
+      "variables": {
+        "NODE_ENV": "production",
+        "REACT_APP_API_URL": "${{BACKEND_URL}}"
+      },
+      "roots": ["frontend"]
+    }
+  }
+}
