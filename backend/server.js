@@ -6,7 +6,14 @@ const { v4: uuidv4 } = require("uuid");
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  }),
+);
 app.use(express.json());
 
 // In-memory database (replace with MongoDB later)
